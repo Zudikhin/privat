@@ -1,11 +1,20 @@
 $white = #fff
 $black = #090F11
 $mainclr = #984E33
+$green = #3a5157
 
 /*==============================
 	Fonts
 ==============================*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap')
+
+@font-face
+	font-family 'Phonk Sans'
+	src url('../font/PhonkSans-Light.woff2') format('woff2'),
+		url('../font/PhonkSans-Light.woff') format('woff');
+	font-weight 300
+	font-style normal
+	font-display swap
 
 /*==============================
 	Common styles
@@ -73,12 +82,12 @@ svg
 	transition fill .5s ease
 
 ::-moz-selection
-	background $white
-	color $black
+	background $mainclr
+	color $white
 	text-shadow none
 ::selection
-	background $white
-	color $black
+	background $mainclr
+	color $white
 	text-shadow none
 
 ::-webkit-input-placeholder
@@ -112,6 +121,308 @@ body::-webkit-scrollbar-thumb
 /*==============================
 	Header
 ==============================*/
+.header
+	position fixed
+	top 0
+	left 0
+	width 100%
+	border-bottom 1px solid $white
+	background-color $black
+	z-index 99
+	&__content
+		display flex
+		flex-direction row
+		justify-content space-between
+		align-items center
+		width 100%
+		height 65px
+		max-width 1780px
+		margin 0 auto
+	&__logo
+		height 40px
+		width 40px
+		overflow hidden
+		img
+			width auto
+			height 40px
+	&__phone
+		display none
+	&__social
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		width auto
+		li
+			margin-right 10px
+			&:last-child
+				margin-right 0
+		a
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			width 30px
+			height 30px
+			border-radius 50%
+			background-color rgba($mainclr, .5)
+			img
+				width 20px
+				height auto
+	&__btn
+		display none
+	&__menu
+		width 40px
+		height 20px
+		display block
+		position relative
+		span
+			position absolute
+			left 0
+			width 40px
+			height 1px
+			background-color $white
+			transition .5s ease
+			opacity 1
+			&:first-child
+				top 0
+			&:nth-child(2)
+				top 10px
+			&:last-child
+				top 20px
+		&--active
+			span
+				&:first-child
+					transform rotate(45deg)
+					top 10px
+				&:nth-child(2)
+					opacity 0
+				&:last-child
+					transform rotate(-45deg)
+					top 10px
+	@media (min-width: 768px)
+		border none
+		&__content
+			height 80px
+		&__phone
+			display block
+			font-size 18px
+			color $white
+			font-weight 500
+			margin-left auto
+			margin-right 40px
+		&__social
+			margin-right 40px
+			a
+				width 34px
+				height 34px
+		&__btn
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			width 200px
+			height 50px
+			border 1px solid $white
+			border-radius 8px
+			background-color $black
+			margin-right 40px
+			color $white
+			font-size 18px
+	@media (min-width: 1200px)
+		&__logo
+			width auto
+			overflow visible
+		&__social
+			a
+				&:hover
+					background-color $mainclr
+		&__btn
+			&:hover
+				background-color $mainclr
+				border-color $mainclr
+	@media (min-width: 1680px)
+		&__phone
+			font-size 22px
+		&__phone
+		&__social
+		&__btn
+			margin-right 50px
+		&__btn
+			width 250px
+	@media (min-width: 1920px)
+		&__phone
+		&__social
+		&__btn
+			margin-right 70px
+
+/*==============================
+	Hero
+==============================*/
+.hero
+	padding 90px 0 0
+	max-width 1920px
+	margin 0 auto
+	&__content
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		width 100%
+		position relative
+	&__title
+		font-size 38px
+		text-transform uppercase
+		font-family 'Phonk Sans'
+		margin-bottom 5px
+		b
+			color $mainclr
+			font-weight 300
+	&__text
+		font-size 18px
+		font-weight 300
+		margin-bottom 30px
+	&__btn
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 240px
+		height 48px
+		border-radius 8px
+		background-color $mainclr
+		font-size 17px
+		font-weight 500
+		color $white
+		text-transform uppercase
+	&__tag
+		display none
+	&__carousel
+		margin-top 40px
+	&__slide
+		display block
+		position relative
+		border-radius 4px
+		overflow hidden
+		margin-top 15px
+		img
+			width 100%
+		span
+			display inline-flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			position absolute
+			top 0
+			left 0
+			background url('../img/quotes.png') no-repeat left 5px center
+			background-size auto 100%
+			background-color rgba(#080809, .7)
+			border-radius 4px 0 4px 0
+			height 50px
+			font-size 14px
+			font-weight 500
+			padding 0 15px 0 55px
+		p
+			display inline-flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			position absolute
+			bottom 0
+			right 0
+			background-color rgba(#080809, .7)
+			font-size 12px
+			text-transform uppercase
+			font-weight 500
+			padding 10px 15px
+			margin-bottom 0
+			border-radius 4px 0 0 0
+	@media (min-width: 768px)
+		padding 120px 38px 0
+		&__title
+			font-size 44px
+		&__text
+			font-size 24px
+			margin-bottom 45px
+		&__btn
+			width 300px
+			height 60px
+			font-size 20px
+		&__carousel
+			margin-top 60px
+		&__slide
+			border-radius 8px
+			span
+				height 60px
+				background-size auto 58px
+				padding 0 20px 0 65px
+				font-size 16px
+				border-radius 8px 0 8px 0
+			p
+				border-radius 8px 0 0 0
+				font-size 24px
+				padding 10px 20px
+	@media (min-width: 992px)
+		&__title
+			font-size 58px
+	@media (min-width: 1200px)
+		padding 120px 58px 0
+		&__title
+			font-size 71px
+		&__text
+			font-size 38px
+			margin-bottom 60px
+		&__btn
+			width 340px
+			height 72px
+			font-size 22px
+			&:hover
+				background-color $green
+		&__slide
+			span
+				height 70px
+				font-size 18px
+				text-transform uppercase
+				padding 0 30px 0 65px
+			p
+				font-size 32px
+	@media (min-width: 1440px)
+		&__title
+			font-size 81px
+		&__text
+			font-size 32px
+		&__tag
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			position absolute
+			bottom 70px
+			left 0
+			span
+				font-size 24px
+				font-weight 300
+				width 390px
+		&__carousel
+			width 700px
+			margin-left auto
+			margin-top -190px
+	@media (min-width: 1680px)
+		&__title
+			font-size 96px
+		&__tag
+			left 190px
+	@media (min-width: 1920px)
+		&__title
+			font-size 112px
+		&__carousel
+			width 1035px
+		&__text
+			font-size 38px
+		&__tag
+			left 140px
+			bottom 260px
 
 /*==============================
 	Section
@@ -132,6 +443,10 @@ body::-webkit-scrollbar-thumb
 		font-weight 500
 		text-transform uppercase
 		margin-bottom 0
+		&--bg
+			background linear-gradient(90deg, #984E33 0%, rgba(152, 78, 51, 0.00) 100%)
+			padding 0 5px
+			border-radius 4px 0 0 4px
 	&__tag
 		font-size 20px
 		font-weight 400
@@ -207,6 +522,9 @@ body::-webkit-scrollbar-thumb
 			margin-bottom 25px
 		&__title
 			font-size 42px
+			&--bg
+				padding 0 10px
+				border-radius 8px 0 0 8px
 		&__tag
 			font-size 32px
 			margin-top 15px
@@ -239,6 +557,8 @@ body::-webkit-scrollbar-thumb
 			margin-bottom 35px
 		&__title
 			font-size 62px
+			&--bg
+				padding 0 20px
 		&__tag
 			font-size 50px
 		&__text
@@ -314,6 +634,8 @@ body::-webkit-scrollbar-thumb
 			height 72px
 			font-size 22px
 			margin 80px auto 0
+			&:hover
+				background-color $green
 
 /*==============================
 	Club
@@ -331,6 +653,7 @@ body::-webkit-scrollbar-thumb
 		text-transform uppercase
 		b
 			color $mainclr
+			font-weight 500
 	&__text
 		font-size 15px
 		font-weight 300
@@ -432,6 +755,213 @@ body::-webkit-scrollbar-thumb
 			padding-right 29%
 		&__number
 			width calc(20% - 60px)
+
+/*==============================
+	Clubhouse
+==============================*/
+.clubhouse-mob
+	display flex
+	flex-direction column
+	justify-content flex-start
+	align-items flex-start
+	width 100%
+	&__title
+		font-size 22px
+		font-weight 500
+		margin-bottom 0
+		text-transform uppercase
+		b
+			color $mainclr
+			font-weight 500
+	&__list
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		width 100%
+		margin-top 5px
+		li
+			position relative
+			font-size 16px
+			margin-top 25px
+			padding-left 25px
+			&:before
+				content ''
+				position absolute
+				left 0
+				top 50%
+				display block
+				width 5px
+				height 5px
+				margin-top -2px
+				border-radius 50%
+				background-color $mainclr
+	@media (min-width: 768px)
+		&__title
+			font-size 42px
+		&__list
+			li
+				font-size 18px
+	@media (min-width: 1200px)
+		display none
+
+.clubhouse-desk
+	display none
+	@media (min-width: 1200px)
+		display block
+		width 1140px
+		position relative
+		margin 0 auto
+		&__bg
+			display block
+			margin 0 auto
+			max-width 100%
+			pointer-events none
+			z-index 1
+			position relative
+		&__title
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			width 650px
+			height 220px
+			background-color $mainclr
+			border-radius 8px
+			font-size 44px
+			font-weight 500
+			text-transform uppercase
+			padding 0 40px
+			position absolute
+			z-index 2
+			top 50%
+			left 50%
+			margin -110px 0 0 -335px
+		&__item
+			position absolute
+			font-size 20px
+			font-weight 500
+			&--1
+				top 50px
+				left -20px
+				width 270px
+			&--2
+				top 145px
+				left 100px
+				width 420px
+			&--3
+				bottom 130px
+				left -20px
+				width 325px
+			&--4
+				bottom 140px
+				left 310px
+				width 245px
+				text-align right
+			&--5
+				top 50px
+				right -20px
+				width 300px
+				text-align right
+			&--6
+				top 90px
+				right 260px
+				width 220px
+				text-align right
+			&--7
+				top 220px
+				right -20px
+				width 315px
+				text-align right
+			&--8
+				bottom 210px
+				right -20px
+				width 200px
+				text-align right
+			&--9
+				bottom 100px
+				right 130px
+				width 250px
+				text-align right
+	@media (min-width: 1400px)
+		width 1300px
+		&__item
+			&--1
+				top 60px
+			&--2
+				top 160px
+				left 160px
+			&--3
+				bottom 150px
+			&--4
+				bottom 150px
+				left 350px
+			&--5
+				top 60px
+			&--6
+				top 105px
+				right 280px
+			&--7
+				top 260px
+			&--8
+				bottom 250px
+			&--9
+				bottom 110px
+				right 180px
+	@media (min-width: 1600px)
+		width 1525px
+		&__item
+			font-size 22px
+			&--1
+				top 85px
+				left -30px
+				width 290px
+			&--2
+				top 185px
+				left 200px
+				width 460px
+			&--3
+				bottom 220px
+				left -30px
+				width 415px
+			&--4
+				bottom 180px
+				left 360px
+				width 245px
+			&--5
+				top 90px
+				right -30px
+				width 300px
+			&--6
+				top 120px
+				right 300px
+				width 220px
+			&--7
+				top 310px
+				right -30px
+				width 315px
+			&--8
+				bottom 300px
+				right -30px
+				width 200px
+			&--9
+				bottom 130px
+				right 215px
+				width 250px
+	@media (min-width: 1900px)
+		&__item
+			&--1
+				left -100px
+			&--3
+				left -100px
+			&--5
+				right -110px
+			&--6
+				right 280px
+			&--7
+				right -110px
+			&--8
+				right -20px
 
 /*==============================
 	Founder
@@ -790,6 +1320,240 @@ body::-webkit-scrollbar-thumb
 			font-size 20px
 
 /*==============================
+	Calendar
+==============================*/
+.evo-calendar
+	background-color $black
+	color $white
+	box-shadow none
+	border 1px solid $white
+	border-radius 4px
+	margin-top 15px
+	th[colspan="7"]
+		color $white
+		font-weight 500
+		padding 5px 0 10px
+		font-size 18px
+		&:after
+			display none
+	tr
+		&.calendar-header
+			.calendar-header-day
+				color rgba($white, .7)
+		&.calendar-body
+			.calendar-day
+				.day
+					display flex
+					flex-direction column
+					justify-content center
+					align-items center
+					color $white
+					padding 0
+					.event-indicator
+						-webkit-transform translate(0,0)
+						-ms-transform translate(0,0)
+						transform translate(0,0)
+						top 0
+						left 0
+						right 0
+						bottom 0
+						background-color $mainclr
+						width 100%
+						border-radius 50%
+						z-index -1
+						.type-bullet
+							display none
+					&.calendar-active
+						border-color $mainclr
+						color $white
+						&:hover
+							color $white
+					&:hover
+						background-color transparent
+						border-color $mainclr
+						color $white
+	@media (min-width: 768px)
+		border-radius 8px
+		th[colspan="7"]
+			font-size 24px
+			padding 15px 0
+	@media (min-width: 1200px)
+		th[colspan="7"]
+			font-size 30px
+			padding 11px 0 21px
+		tr
+			&.calendar-header
+				.calendar-header-day
+					color rgba($white, .7)
+					font-size 18px
+			&.calendar-body
+				.calendar-day
+					.day
+						font-size 18px
+						height 44px
+						width 44px
+
+.calendar-sidebar
+	background-color $black
+	box-shadow none
+	span
+		&#sidebarToggler
+			background-color $black
+			span
+				height 1px
+				&:before
+				&:after
+					height 1px
+	.calendar-year
+		background-color $black
+		box-shadow none
+		border-bottom 1px solid $white
+		button.icon-button
+			display none
+		.month-list
+			background-color $black
+	.month-list
+		background-color $black
+		.calendar-months
+			li
+				font-size 16px
+				&.active-month
+					background linear-gradient(90deg, #984E33 0%, rgba(152, 78, 51, 0.00) 100%)
+					border-radius 4px 0 0 4px
+					&:hover
+						color $white
+				&:hover
+					background-color transparent
+					color $mainclr
+	@media (min-width: 426px)
+		span
+			&#sidebarToggler
+				box-shadow none
+	@media (min-width: 768px)
+		width 200px
+		border-right 1px solid $white
+		span
+			&#sidebarToggler
+				display none
+		.calendar-year
+			font-size 24px
+			padding 10px
+		.month-list
+			.calendar-months
+				margin-top 5px
+				li
+					padding 8px 30px
+					font-size 18px
+					&.active-month
+						border-radius 0
+	@media (min-width: 1200px)
+		position relative
+		width 300px
+		.month-list
+			padding 10px 0
+	@media (min-width: 1920px)
+		width 350px
+
+.calendar-inner
+	padding 55px 0 15px 0
+	box-shadow none
+	background-color $black
+	border-bottom 1px solid $white
+	&:after
+		background-color rgba($mainclr, .2)
+	@media (min-width: 426px)
+		padding-top 20px
+	@media (min-width: 768px)
+		max-width calc(100% - 200px)
+		border-bottom none
+		margin-left 200px
+		padding-top 0
+	@media (min-width: 1200px)
+		max-width calc(100% - 600px)
+		margin-left 0
+	@media (min-width: 1440px)
+		max-width calc(100% - 700px)
+	@media (min-width: 1920px)
+		max-width calc(100% - 850px)
+		padding 0 60px
+
+.calendar-events
+	position relative
+	background-color $black
+	box-shadow none
+	height auto
+	top auto
+	right auto
+	.event-header
+		display none
+	.event-list
+		margin-top 0
+		.event-empty
+			padding 0
+			background-color transparent
+			border none
+			p
+				color $white
+				font-size 16px
+				font-weight 300
+	.event-container
+		margin-bottom 20px
+		&:before
+			display none
+		.event-icon
+			display none
+		.event-info
+			width 100%
+			padding 0
+			p.event-title
+				font-size 20px
+				color $white
+				font-weight 500
+			p.event-desc
+				font-size 15px
+				font-weight 300
+		&:last-child
+			margin-bottom 0
+		&:hover
+			background-color transparent
+			box-shadow none
+	@media (min-width: 768px)
+		margin-left 200px
+		width calc(100% - 200px)
+		border-top 1px solid $white
+		padding 30px
+		min-height 150px
+		.event-container
+			.event-info
+				width 100%
+				padding 0
+				p.event-title
+					font-size 26px
+				p.event-desc
+					font-size 18px
+	@media (min-width: 1200px)
+		margin-left 0
+		width 300px
+		border-top none
+		border-left 1px solid $white
+		position absolute
+		top 0
+		right 0
+		bottom 0
+	@media (min-width: 1440px)
+		width 400px
+	@media (min-width: 1920px)
+		width 500px
+
+.event-hide .calendar-events
+	-webkit-transform translateX(0)
+	-ms-transform translateX(0)
+	transform translateX(0)
+	height auto
+	padding 15px
+	
+
+/*==============================
 	Tab wrap
 ==============================*/
 .tabs-wrap
@@ -1042,6 +1806,8 @@ body::-webkit-scrollbar-thumb
 			width 270px
 			height 72px
 			font-size 22px
+			&:hover
+				background-color $green
 
 /*==============================
 	Footer
@@ -1168,6 +1934,8 @@ body::-webkit-scrollbar-thumb
 		color $white
 		text-transform uppercase
 		margin-top 20px
+		&--modal
+			margin-top 50px
 	@media (min-width: 768px)
 		&__input
 			height 60px
@@ -1189,6 +1957,50 @@ body::-webkit-scrollbar-thumb
 			width 340px
 			height 72px
 			font-size 22px
+			&:hover
+				background-color $green
+
+/*==============================
+	Modal
+==============================*/
+.modal
+	background url('../img/modal.png') no-repeat center / cover
+	.modal-content
+		background-color transparent
+		border-radius 0
+		border none
+	&__content
+		position relative
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items center
+		background-color transparent
+		margin 0 auto
+		width 100%
+		padding 0 15px
+	&__title
+		color $white
+		font-size 22px
+		font-weight 500
+		text-transform uppercase
+		margin-bottom 50px
+	&__form
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items center
+		width 100%
+	@media (min-width: 768px)
+		&__title
+			font-size 32px
+	@media (min-width: 1200px)
+		--bs-modal-width 890px
+		&__title
+			font-size 52px
+
+.modal-backdrop
+	background $black
 
 /*==============================
 	Splide
@@ -1196,6 +2008,7 @@ body::-webkit-scrollbar-thumb
 .splide
 	&--speakers
 	&--residents
+	&--hero
 		.splide__arrows
 			position relative
 			display flex !important
@@ -1233,6 +2046,7 @@ body::-webkit-scrollbar-thumb
 	@media (min-width: 768px)
 		&--speakers
 		&--residents
+		&--hero
 			.splide__arrows
 				margin-top 40px
 			.splide__arrow
@@ -1262,4 +2076,63 @@ body::-webkit-scrollbar-thumb
 					pointer-events none
 					&:hover
 						background-color transparent
-				
+		&--hero
+			.splide__arrows
+				margin-top 25px
+				justify-content flex-start
+			.splide__arrow
+				width 46px
+				height 46px
+				background-color rgba(#B6B6B6, .45)
+				svg
+					width 30px
+				&:hover
+					background-color $mainclr
+				&[disabled]
+					background-color transparent
+					cursor default
+					pointer-events none
+					&:hover
+						background-color transparent
+				&--prev
+					margin-left 0
+			.splide__pagination
+				display flex
+				flex-direction row
+				justify-content center
+				align-items center
+				width 100%
+				padding 0
+				bottom 11px
+				li
+					margin-right 5px
+					&:last-child
+						margin-right 0
+			.splide__pagination__page
+				display block
+				height 24px
+				width 24px
+				border-radius 50%
+				background-color transparent
+				transition .5s ease
+				border 1px solid transparent
+				position relative
+				opacity 1
+				margin 0
+				&:before
+					content ''
+					position absolute
+					display block
+					width 4px
+					height 4px
+					border-radius 50%
+					top 50%
+					left 50%
+					margin -2px 0 0 -2px
+					background-color #575A5B
+					transition background-color .5s ease
+				&.is-active
+					transform scale(1)
+					border-color $white
+					&:before
+						background-color $white

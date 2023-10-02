@@ -108,15 +108,8 @@ svg
 :focus-visible
 	outline 0px dotted
 
-body::-webkit-scrollbar
-	width 16px
-
-body::-webkit-scrollbar-track
-	background rgba($white, .04)
-
-body::-webkit-scrollbar-thumb
-	background-color $mainclr
-	outline 0 solid $white
+.fade
+	transition opacity .25s linear
 
 /*==============================
 	Header
@@ -433,7 +426,7 @@ body::-webkit-scrollbar-thumb
 			left 190px
 	@media (min-width: 1920px)
 		&__title
-			font-size 112px
+			font-size 111px
 		&__carousel
 			width 1035px
 		&__text
@@ -1342,127 +1335,148 @@ body::-webkit-scrollbar-thumb
 ==============================*/
 .calendar
 	margin-top 15px
-	&__slide
-		display flex
-		flex-direction column
-		justify-content flex-start
-		align-items flex-start
-		width 100%
-		min-height 100%
+	&__card
+		text-align center
 		border 1px solid $white
 		border-radius 4px
-	@media (min-width: 768px)
-		&__slide
-			border-radius 8px
-	@media (min-width: 1200px)
-		padding 0 70px
-
-.calendarev-container-calendar
-	font-family 'Montserrat', sans-serif
-	background-color $black
-	width 100%
-	max-width 100%
-	border none
-	border-radius 4px
-	padding-bottom 10px
-	@media (min-width: 768px)
-		border-radius 8px
-
-.calendarev-calendar-head
-	display flex
-	flex-direction row
-	justify-content center
-	align-items center
-	width 100%
-	.prev
-	.next
-		display none
-	.calendarev-selects
+		padding 20px 10px
+		min-height 100%
+	&__card-title
+		font-size 18px
+		display block
+		text-transform uppercase
+		margin-bottom 20px
+		font-weight 500
+	&__card-grid
+		display grid
+		grid-template-columns repeat(7,1fr)
+		grid-template-rows repeat(6,1fr)
+		grid-gap 5px
+	&__card-item
 		display flex
 		flex-direction row
 		justify-content center
 		align-items center
-		width 100%
-		margin 0
-		.calendarev-years
-			display none
-	.calendarev-month
-		padding 0 !important
-		display inline-block !important
-		font-size 18px !important
-		font-weight 500
-		background-color transparent
-		border none
-		color $white
-		text-transform uppercase
-		width auto
-		text-align center
-		pointer-events none
-	@media (min-width: 1200px)
-		padding 25px 0
-		.calendarev-month
-			font-size 24px !important
-
-.calendarev-calendar-body
-	background-color transparent
-	z-index 1
-	th
-		color $white
-		background-color transparent
-		border none
-		width auto
-		padding-top 0
-		font-size 18px
-	.calendarev-day
-		background-color transparent
-		width 30px
-		height 40px
-		font-size 18px
 		position relative
-		&.calendarev-day-event
-			&:before
-				content ''
-				position absolute
-				width 30px
-				height 30px
-				border-radius 50%
+		height 30px
+		width 30px
+		font-size 18px
+		border-radius 50%
+		text-transform uppercase
+		justify-self center
+		color $white
+		transition background-color .5s ease
+		&--inactive
+			color #616161
+		&--event1
+			background-color rgba($mainclr, .5)
+		&--event2
+			background-color $mainclr
+			.calendar__card-desc
 				background-color $mainclr
-				z-index -1
-				left 50%
-				top 50%
-				transform translate(-50%, -50%)
-				transition background-color .5s ease
-			&:hover
-				background-color transparent
-				&:before
-					background-color $green
-			.event-popup
-				font-size 16px
-				background-color $mainclr
-				padding 10px
-				border-radius 4px
-				&:before
+				color $white
+				&:after
 					border-top-color $mainclr
-					bottom -9px
-		&.calendarev-day-current
+		&--event1
+		&--event2
+			cursor default
 			&:hover
-				background-color transparent
-		&.calendarev-day-selected
-			font-weight 400
-		&:hover
-			font-size 18px
+				background-color $green
+				.calendar__card-desc
+					opacity 1
+					pointer-events auto
+	&__card-desc
+		position absolute
+		bottom 100%
+		left 0
+		background-color $white
+		border-radius 4px
+		padding 10px
+		font-size 12px
+		color #000
+		text-transform none
+		text-align left
+		margin-bottom 5px
+		min-width 180px
+		opacity 0
+		pointer-events none
+		transition opacity .5s ease
+		&:after
+			content ''
+			top 100%
+			left 10px
+			border solid transparent
+			height 0
+			width 0
+			position absolute
+			pointer-events none
+			border-color rgba($white, 0)
+			border-top-color $white
+			border-width 5px
+		&--right
+			left auto
+			right 0
+			&:after
+				left auto
+				right 10px
+	@media (min-width: 768px)
+		&__card
+			border-radius 8px
+			padding 25px 10px
+		&__card-title
+			font-size 20px
+			margin-bottom 25px
+		&__card-item
+			font-size 20px
+			height 36px
+			width 36px
+		&__card-desc
+			font-size 14px
+			&:after
+				left 13px
+			&--right
+				&:after
+					left auto
+					right 13px
 	@media (min-width: 1200px)
-		th
-			font-size 20px
-		.calendarev-day
-			height 50px
-			font-size 20px
-			&.calendarev-day-event
-				&:before
-					width 40px
-					height 40px
-			&:hover
-				font-size 20px
+		padding 0 70px
+		&__card
+			padding 30px 10px
+		&__card-title
+			font-size 24px
+			margin-bottom 30px
+		&__card-item
+			font-size 24px
+			height 40px
+			width 40px
+		&__card-desc
+			font-size 16px
+			min-width 240px
+			&:after
+				left 15px
+			&--right
+				&:after
+					left auto
+					right 15px
+	@media (min-width: 1680px)
+		&__card-title
+			font-size 32px
+			margin-bottom 30px
+		&__card-item
+			font-size 30px
+			height 46px
+			width 46px
+		&__card-desc
+			&:after
+				left 18px
+			&--right
+				&:after
+					left auto
+					right 18px
+	@media (min-width: 1920px)
+		&__card-desc
+			min-width 270px
+			font-size 18px
 
 /*==============================
 	Tab wrap

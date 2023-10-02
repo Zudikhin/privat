@@ -142,9 +142,22 @@ body::-webkit-scrollbar-thumb
 		height 40px
 		width 40px
 		overflow hidden
+		position relative
 		img
-			width auto
-			height 40px
+			width 100%
+			height 100%
+			position relative
+			transition opacity .5s ease
+			&:last-child
+				position absolute
+				top 0
+				left 0
+				opacity 0
+		&:hover
+			img
+				opacity 0
+				&:last-child
+					opacity 1
 	&__phone
 		display none
 	&__social
@@ -230,13 +243,18 @@ body::-webkit-scrollbar-thumb
 			color $white
 			font-size 18px
 	@media (min-width: 1200px)
+		&__content
+			height 86px
 		&__logo
-			width auto
-			overflow visible
+			width 56px
+			height 56px
 		&__social
 			a
 				&:hover
 					background-color $mainclr
+		&__phone
+			&:hover
+				color $mainclr
 		&__btn
 			&:hover
 				background-color $mainclr
@@ -1322,236 +1340,129 @@ body::-webkit-scrollbar-thumb
 /*==============================
 	Calendar
 ==============================*/
-.evo-calendar
-	background-color $black
-	color $white
-	box-shadow none
-	border 1px solid $white
-	border-radius 4px
+.calendar
 	margin-top 15px
-	th[colspan="7"]
-		color $white
-		font-weight 500
-		padding 5px 0 10px
-		font-size 18px
-		&:after
-			display none
-	tr
-		&.calendar-header
-			.calendar-header-day
-				color rgba($white, .7)
-		&.calendar-body
-			.calendar-day
-				.day
-					display flex
-					flex-direction column
-					justify-content center
-					align-items center
-					color $white
-					padding 0
-					.event-indicator
-						-webkit-transform translate(0,0)
-						-ms-transform translate(0,0)
-						transform translate(0,0)
-						top 0
-						left 0
-						right 0
-						bottom 0
-						background-color $mainclr
-						width 100%
-						border-radius 50%
-						z-index -1
-						.type-bullet
-							display none
-					&.calendar-active
-						border-color $mainclr
-						color $white
-						&:hover
-							color $white
-					&:hover
-						background-color transparent
-						border-color $mainclr
-						color $white
+	&__slide
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		width 100%
+		min-height 100%
+		border 1px solid $white
+		border-radius 4px
+	@media (min-width: 768px)
+		&__slide
+			border-radius 8px
+	@media (min-width: 1200px)
+		padding 0 70px
+
+.calendarev-container-calendar
+	font-family 'Montserrat', sans-serif
+	background-color $black
+	width 100%
+	max-width 100%
+	border none
+	border-radius 4px
+	padding-bottom 10px
 	@media (min-width: 768px)
 		border-radius 8px
-		th[colspan="7"]
-			font-size 24px
-			padding 15px 0
-	@media (min-width: 1200px)
-		th[colspan="7"]
-			font-size 30px
-			padding 11px 0 21px
-		tr
-			&.calendar-header
-				.calendar-header-day
-					color rgba($white, .7)
-					font-size 18px
-			&.calendar-body
-				.calendar-day
-					.day
-						font-size 18px
-						height 44px
-						width 44px
 
-.calendar-sidebar
-	background-color $black
-	box-shadow none
-	span
-		&#sidebarToggler
-			background-color $black
-			span
-				height 1px
-				&:before
-				&:after
-					height 1px
-	.calendar-year
-		background-color $black
-		box-shadow none
-		border-bottom 1px solid $white
-		button.icon-button
-			display none
-		.month-list
-			background-color $black
-	.month-list
-		background-color $black
-		.calendar-months
-			li
-				font-size 16px
-				&.active-month
-					background linear-gradient(90deg, #984E33 0%, rgba(152, 78, 51, 0.00) 100%)
-					border-radius 4px 0 0 4px
-					&:hover
-						color $white
-				&:hover
-					background-color transparent
-					color $mainclr
-	@media (min-width: 426px)
-		span
-			&#sidebarToggler
-				box-shadow none
-	@media (min-width: 768px)
-		width 200px
-		border-right 1px solid $white
-		span
-			&#sidebarToggler
-				display none
-		.calendar-year
-			font-size 24px
-			padding 10px
-		.month-list
-			.calendar-months
-				margin-top 5px
-				li
-					padding 8px 30px
-					font-size 18px
-					&.active-month
-						border-radius 0
-	@media (min-width: 1200px)
-		position relative
-		width 300px
-		.month-list
-			padding 10px 0
-	@media (min-width: 1920px)
-		width 350px
-
-.calendar-inner
-	padding 55px 0 15px 0
-	box-shadow none
-	background-color $black
-	border-bottom 1px solid $white
-	&:after
-		background-color rgba($mainclr, .2)
-	@media (min-width: 426px)
-		padding-top 20px
-	@media (min-width: 768px)
-		max-width calc(100% - 200px)
-		border-bottom none
-		margin-left 200px
-		padding-top 0
-	@media (min-width: 1200px)
-		max-width calc(100% - 600px)
-		margin-left 0
-	@media (min-width: 1440px)
-		max-width calc(100% - 700px)
-	@media (min-width: 1920px)
-		max-width calc(100% - 850px)
-		padding 0 60px
-
-.calendar-events
-	position relative
-	background-color $black
-	box-shadow none
-	height auto
-	top auto
-	right auto
-	.event-header
+.calendarev-calendar-head
+	display flex
+	flex-direction row
+	justify-content center
+	align-items center
+	width 100%
+	.prev
+	.next
 		display none
-	.event-list
-		margin-top 0
-		.event-empty
-			padding 0
-			background-color transparent
-			border none
-			p
-				color $white
-				font-size 16px
-				font-weight 300
-	.event-container
-		margin-bottom 20px
-		&:before
+	.calendarev-selects
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 100%
+		margin 0
+		.calendarev-years
 			display none
-		.event-icon
-			display none
-		.event-info
-			width 100%
-			padding 0
-			p.event-title
-				font-size 20px
-				color $white
-				font-weight 500
-			p.event-desc
-				font-size 15px
-				font-weight 300
-		&:last-child
-			margin-bottom 0
-		&:hover
-			background-color transparent
-			box-shadow none
-	@media (min-width: 768px)
-		margin-left 200px
-		width calc(100% - 200px)
-		border-top 1px solid $white
-		padding 30px
-		min-height 150px
-		.event-container
-			.event-info
-				width 100%
-				padding 0
-				p.event-title
-					font-size 26px
-				p.event-desc
-					font-size 18px
+	.calendarev-month
+		padding 0 !important
+		display inline-block !important
+		font-size 18px !important
+		font-weight 500
+		background-color transparent
+		border none
+		color $white
+		text-transform uppercase
+		width auto
+		text-align center
+		pointer-events none
 	@media (min-width: 1200px)
-		margin-left 0
-		width 300px
-		border-top none
-		border-left 1px solid $white
-		position absolute
-		top 0
-		right 0
-		bottom 0
-	@media (min-width: 1440px)
-		width 400px
-	@media (min-width: 1920px)
-		width 500px
+		padding 25px 0
+		.calendarev-month
+			font-size 24px !important
 
-.event-hide .calendar-events
-	-webkit-transform translateX(0)
-	-ms-transform translateX(0)
-	transform translateX(0)
-	height auto
-	padding 15px
-	
+.calendarev-calendar-body
+	background-color transparent
+	z-index 1
+	th
+		color $white
+		background-color transparent
+		border none
+		width auto
+		padding-top 0
+		font-size 18px
+	.calendarev-day
+		background-color transparent
+		width 30px
+		height 40px
+		font-size 18px
+		position relative
+		&.calendarev-day-event
+			&:before
+				content ''
+				position absolute
+				width 30px
+				height 30px
+				border-radius 50%
+				background-color $mainclr
+				z-index -1
+				left 50%
+				top 50%
+				transform translate(-50%, -50%)
+				transition background-color .5s ease
+			&:hover
+				background-color transparent
+				&:before
+					background-color $green
+			.event-popup
+				font-size 16px
+				background-color $mainclr
+				padding 10px
+				border-radius 4px
+				&:before
+					border-top-color $mainclr
+					bottom -9px
+		&.calendarev-day-current
+			&:hover
+				background-color transparent
+		&.calendarev-day-selected
+			font-weight 400
+		&:hover
+			font-size 18px
+	@media (min-width: 1200px)
+		th
+			font-size 20px
+		.calendarev-day
+			height 50px
+			font-size 20px
+			&.calendarev-day-event
+				&:before
+					width 40px
+					height 40px
+			&:hover
+				font-size 20px
 
 /*==============================
 	Tab wrap
@@ -2009,6 +1920,7 @@ body::-webkit-scrollbar-thumb
 	&--speakers
 	&--residents
 	&--hero
+	&--calendar
 		.splide__arrows
 			position relative
 			display flex !important
@@ -2047,6 +1959,7 @@ body::-webkit-scrollbar-thumb
 		&--speakers
 		&--residents
 		&--hero
+		&--calendar
 			.splide__arrows
 				margin-top 40px
 			.splide__arrow
@@ -2065,17 +1978,10 @@ body::-webkit-scrollbar-thumb
 			.splide__arrow
 				width 46px
 				height 46px
-				background-color rgba(#B6B6B6, .45)
 				svg
 					width 30px
 				&:hover
-					background-color $mainclr
-				&[disabled]
-					background-color transparent
-					cursor default
-					pointer-events none
-					&:hover
-						background-color transparent
+					background-color rgba(#B6B6B6, .45)
 		&--hero
 			.splide__arrows
 				margin-top 25px
@@ -2083,17 +1989,10 @@ body::-webkit-scrollbar-thumb
 			.splide__arrow
 				width 46px
 				height 46px
-				background-color rgba(#B6B6B6, .45)
 				svg
 					width 30px
 				&:hover
-					background-color $mainclr
-				&[disabled]
-					background-color transparent
-					cursor default
-					pointer-events none
-					&:hover
-						background-color transparent
+					background-color rgba(#B6B6B6, .45)
 				&--prev
 					margin-left 0
 			.splide__pagination
@@ -2136,3 +2035,26 @@ body::-webkit-scrollbar-thumb
 					border-color $white
 					&:before
 						background-color $white
+		&--calendar
+			.splide__arrows
+				position absolute
+				width auto
+				margin-top 0
+				left 0
+				right 0
+				bottom 50%
+				pointer-events none
+			.splide__arrow
+				position absolute
+				margin 0
+				pointer-events auto
+				width 46px
+				height 46px
+				svg
+					width 30px
+				&:hover
+					background-color rgba(#B6B6B6, .45)
+				&--prev
+					left 0
+				&--next
+					right 0

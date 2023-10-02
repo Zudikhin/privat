@@ -19,9 +19,10 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="header__content">
-						<div class="header__logo">
+						<a href="#" class="header__logo">
 							<img src="img/logo.svg" alt="">
-						</div>
+							<img src="img/logo--dark.svg" alt="">
+						</a>
 
 						<a class="header__phone" href="tel:+30000000000">+ 3 000 000 00 00</a>
 
@@ -451,7 +452,36 @@
 				</div>
 
 				<div class="col-12">
-					<div class="calendar"></div>
+					<div class="calendar splide splide--calendar">
+						<div class="splide__track">
+							<ul class="splide__list">
+								<li class="splide__slide">
+									<div id="calendar-1" class="calendar__slide"></div>
+								</li>
+
+								<li class="splide__slide">
+									<div id="calendar-2" class="calendar__slide"></div>
+								</li>
+
+								<li class="splide__slide">
+									<div id="calendar-3" class="calendar__slide"></div>
+								</li>
+
+								<li class="splide__slide">
+									<div id="calendar-4" class="calendar__slide"></div>
+								</li>
+
+								<li class="splide__slide">
+									<div id="calendar-5" class="calendar__slide"></div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="splide__arrows">
+							<button class="splide__arrow splide__arrow--prev" type="button"><svg viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31 8H1M1 8L6.57143 1M1 8L6.57143 15" stroke="white"/></svg></button>
+							<button class="splide__arrow splide__arrow--next" type="button"><svg viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 8H30M30 8L24.4286 1M30 8L24.4286 15" stroke="white"/></svg></button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -674,6 +704,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>

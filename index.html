@@ -19,10 +19,11 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="header__content">
-						<a href="#" class="header__logo">
+						<div class="empty"></div>
+						<!-- <a href="#" class="header__logo">
 							<img src="img/logo.svg" alt="">
 							<img src="img/logo--dark.svg" alt="">
-						</a>
+						</a> -->
 
 						<a class="header__phone" href="tel:+30000000000">+ 3 000 000 00 00</a>
 
@@ -44,6 +45,11 @@
 			</div>
 		</div>
 	</header>
+
+	<a href="#" class="header__logo">
+		<img src="img/logo.svg" alt="">
+		<img src="img/logo--dark.svg" alt="">
+	</a>
 
 	<section class="hero">
 		<div class="container-fluid">
@@ -773,7 +779,6 @@
 				<div class="col-12">
 					<div class="section__head">
 						<h2 class="section__title section__title--bg">Присоединяйся к клубу двух запятых</h2>
-						<p class="section__tag">Вступительный взнос <b>120 000 рублей</b></p>
 					</div>
 				</div>
 
@@ -875,5 +880,19 @@
 
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<script>
+	$(window).scroll(function(){
+		var $this = $(this);
+		if ($this.scrollTop() > 20) {
+			$(".header__logo").addClass("active");
+			$(".hero__title").addClass("active");
+		} else {
+			$(".header__logo").removeClass("active");
+			$(".hero__title").removeClass("active");
+		}
+	});
+</script>

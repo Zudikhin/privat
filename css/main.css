@@ -497,7 +497,7 @@ svg {
 }
 @media (min-width: 1920px) {
     .hero__title {
-        font-size: 108px;
+        font-size: 104px;
     }
     .hero__carousel {
         width: 1035px;

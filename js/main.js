@@ -6,10 +6,11 @@
 	==============================*/
 	if (document.querySelector('.header__menu')) {
 		var headerBtn = document.querySelector('.header__menu');
+		var dropMenu = document.querySelector('.dropdown');
 		// var headerNav = document.querySelector('.menu');
-
 		headerBtn.addEventListener('click', function() {
 			headerBtn.classList.toggle('header__menu--active');
+			dropMenu.classList.toggle('active');
 			// headerNav.classList.toggle('menu--active');
 		});
 	}

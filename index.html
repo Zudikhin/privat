@@ -14,6 +14,12 @@
 </head>
 
 <body>
+
+	<div class="overlay"></div>
+	<div class="preloader">
+		<img src="img/preloader.gif" alt="">
+	</div>
+
 	<header class="header">
 		<div class="container-fluid">
 			<div class="row">
@@ -46,12 +52,12 @@
 		</div>
 	</header>
 
-	<a href="#" class="header__logo">
+	<a href="/" class="header__logo">
 		<img src="img/logo.svg" alt="">
 		<img src="img/logo--dark.svg" alt="">
 	</a>
 
-	<section class="hero">
+	<section id="home" class="hero">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -105,7 +111,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="statictic" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -144,7 +150,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="for" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -185,7 +191,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="founder" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -232,7 +238,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="possibilities" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -267,7 +273,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="result" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -378,7 +384,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="conference" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -448,7 +454,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="calendar" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -661,7 +667,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="acttivities" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -737,7 +743,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="project" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -773,7 +779,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section id="form" class="section">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
@@ -844,11 +850,49 @@
 		</div>
 	</footer>
 
+	<div class="dropdown">
+		<ul>
+			<li data-target="home">
+				Главная
+			</li>
+			<li data-target="statictic">
+				Статистика
+			</li>
+			<li data-target="for">
+				Для кого клуб
+			</li>
+			<li data-target="founder">
+				Основатель клуба
+			</li>
+			<li data-target="possibilities">
+				Инвестиционные возможности
+			</li>
+			<li data-target="result">
+				Результаты резидентов
+			</li>
+			<li data-target="conference">
+				Конференции
+			</li>
+			<li data-target="calendar">
+				Календарь мероприятий
+			</li>
+			<li data-target="acttivities">
+				Активности клуба
+			</li>
+			<li data-target="project">
+				Специальные проекты
+			</li>
+			<li data-target="form">
+				Форма заявки
+			</li>
+		</ul>
+	</div>
+
 	<div class="modal fade" id="modal-club" tabindex="-1" aria-labelledby="modal-club" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal__content">
-					<h6 class="modal__title">Доступ в клуб</h6>
+					<h6 class="modal__title">ЗАПОЛНИТЕ ФОРМУ</h6>
 
 					<form action="#" class="modal__form">
 						<input type="text" class="form__input" placeholder="ФИО">
@@ -878,9 +922,17 @@
 		</div>
 	</div>
 
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('.preloader, .overlay').fadeOut();
+		});
+	</script>
+
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	
 </body>
 </html>
 
@@ -895,4 +947,14 @@
 			$(".hero__title").removeClass("active");
 		}
 	});
+
+	$(".dropdown ul li").click(function() {
+		$(".header__menu").removeClass("header__menu--active");
+		$(".dropdown").removeClass("active");
+		var attr = $(this).attr("data-target");
+		$([document.documentElement, document.body]).animate({
+        	scrollTop: $(`#${attr}`).offset().top
+    	}, 2000);
+	});
+
 </script>

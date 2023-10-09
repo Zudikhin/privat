@@ -112,6 +112,29 @@ svg {
 .fade {
     transition: opacity 0.4s linear;
 }
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #090F11;
+    top: 0;
+    z-index: 999;
+}
+
+.preloader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.preloader img {
+    max-width: 300px;
+}
+
+
 .header {
     position: fixed;
     top: 0;
@@ -2604,10 +2627,67 @@ svg {
     }
     .header__logo.active {
         left: 70px;
+        width: 56px;
+        height: 56px;
     }
     .header__logo.active {
-        top: 5px;
+        top: 15px;
     }
 }
 
 
+.dropdown {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 300px;
+    background: rgba(0,0,0,.6);
+    /* background: #090f11; */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    z-index: 98;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 100px 20px 30px 20px;
+    transform: translateX(100%);
+    transition: all 0.3s linear;
+}
+
+.dropdown.active {
+    transform: translateX(0px);
+    transition: all 0.3s linear;
+}
+
+.dropdown ul {
+    height: 100%;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown ul li {
+    text-align: right;
+    cursor: pointer;
+    /* margin-top: 20px; */
+}
+
+@media (min-width: 768px) {
+    .dropdown {
+        width: 500px;
+    }
+    .dropdown ul li {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .dropdown ul li {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .dropdown {
+        padding: 100px 70px 30px 20px;
+    }
+}

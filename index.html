@@ -938,6 +938,16 @@
 </html>
 
 <script>
+
+	$(".dropdown ul li").click(function() {
+		var attr = $(this).attr("data-target");
+		$([document.documentElement, document.body]).animate({
+        	scrollTop: $(`#${attr}`).offset().top
+    	}, 0);
+		$(".header__menu").removeClass("header__menu--active");
+		$(".dropdown").removeClass("active");
+	});
+	
 	$(window).scroll(function(){
 		var $this = $(this);
 		if ($this.scrollTop() > 20) {
@@ -947,15 +957,6 @@
 			$(".header__logo").removeClass("active");
 			$(".hero__title").removeClass("active");
 		}
-	});
-
-	$(".dropdown ul li").click(function() {
-		$(".header__menu").removeClass("header__menu--active");
-		$(".dropdown").removeClass("active");
-		var attr = $(this).attr("data-target");
-		$([document.documentElement, document.body]).animate({
-        	scrollTop: $(`#${attr}`).offset().top
-    	}, 2000);
 	});
 
 </script>
